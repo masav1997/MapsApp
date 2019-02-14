@@ -43,7 +43,7 @@ function delRow() {
 
 
 function placemark() {
-    let mapState = {center: [55.751574, 37.573856], zoom: 5};
+
     $('title').text($('#inputAddress').val());
     let coords = [];
     $('#table tbody tr').each(function (i, el) {
@@ -56,6 +56,7 @@ function placemark() {
     let polygon = {
         geometry: [coords]
     };
+    let mapState = {center: [$('#lon').val(),$('#lat').val()], zoom: 5};
     const PolygonExample = () => (
         <YMaps>
             <Map defaultState={mapState} className="map">
