@@ -1,9 +1,7 @@
 .content {
-    width: 60%;
+    width: 65%;
     height: 60%;
-    position: fixed;
-    top: 20%;
-    left: 20%;
+    margin-top: 10px;
     display: flex;
     overflow: auto;
     background: white;
@@ -11,8 +9,8 @@
     padding: 25px;
 }
 
-#map {
+.map {
     margin-top: 15px;
-    width: 600px;
-    height: 350px
+    width: 550px;
+    height: 300px
 }

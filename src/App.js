@@ -5,9 +5,10 @@ import MainContent from "./components/MainContent"
 function App() {
     return (
         <div className="App">
-            <MainContent/>
+            <center><MainContent/></center>
         </div>
     )
 }
+
 
 export default App;

@@ -1,6 +1,7 @@
 import React from "react"
-import "./Forms.css"
 import $ from 'jquery';
+import {YMaps, Map, Polygon} from 'react-yandex-maps';
+import ReactDOM from 'react-dom';
 
 function validation() {
     let valid = true;
@@ -23,11 +24,13 @@ function addRow() {
     if (!validation()) {
         return false;
     }
-    let a = '<a href="#">Яндекс</a>';
+    let lon = $('#lon').val();
+    let lat = $('#lat').val();
     $('#table tbody').append('<tr>' +
-        '<td>' + $('#lat').val() + '</td>\n' +
-        '<td>' + $('#lon').val() + '</td>\n' +
-        '<td>' + a + '</td>\n' +
+        '<td>' + lat + '</td>\n' +
+        '<td>' + lon + '</td>\n' +
+        '<td>' + '<a href="https://yandex.ru/maps/?pt=' + lon + ',' + lat + '&z=12&l=map" target="_blank">Яндекс</a>' + '</td>\n' +
+        '<td>' + '<a href="https://www.google.com/maps/search/?api=1&query=' + lat + ',' + lon + '" target="_blank">Google</a>' + '</td>\n' +
         '</tr>');
 }
 
@@ -38,11 +41,30 @@ function delRow() {
     $('#table tbody tr:last').remove();
 }
 
+
 function placemark() {
+    let mapState = {center: [55.751574, 37.573856], zoom: 5};
     $('title').text($('#inputAddress').val());
-    let lat = $('#lat').val();
-    let lon = $('#lon').val();
-    // var myPlacemark = new ymaps.Placemark([lat, lon]);
+    let coords = [];
+    $('#table tbody tr').each(function (i, el) {
+        coords.push([
+            $(el).find('td:eq(0)').text(),
+            $(el).find('td:eq(1)').text(),
+        ]);
+    });
+
+    let polygon = {
+        geometry: [coords]
+    };
+    const PolygonExample = () => (
+        <YMaps>
+            <Map defaultState={mapState} className="map">
+                <Polygon {...polygon}/>
+            </Map>
+        </YMaps>
+    );
+    ReactDOM.render(<PolygonExample/>, document.getElementById('map'));
+
 }
 
 
@@ -78,25 +100,29 @@ function Forms() {
                             id="lon"
                         />
                     </div>
-                    <div className="col-md-6">
-                        <button type="button" className="btn btn-outline-danger" style={{width: 100 + '%'}} onClick={placemark}>
+                    <div className="form-group col-md-6">
+                        <button type="button" className="btn btn-outline-danger" style={{width: 100 + '%'}}
+                                onClick={addRow}>
+                            +
+                        </button>
+                    </div>
+                    <div className="form-group col-md-6">
+                        <button type="button" className="btn btn-outline-danger" style={{width: 100 + '%'}}
+                                onClick={delRow}>
+                            -
+                        </button>
+                    </div>
+                    <div className="form-group col-md-6">
+                        <button type="button" className="btn btn-outline-danger" style={{width: 100 + '%'}}
+                                onClick={placemark}>
                             Обработать
                         </button>
                     </div>
-                    <div className="col-md-6">
-                        <div className="row">
-                            <div className="col-md-6" style={{paddingRight: 0}}>
-                                <button type="button" className="btn btn-outline-danger" style={{width: 100 + '%'}}
-                                        onClick={addRow}>
-                                    +
-                                </button>
-                            </div>
-                            <div className="col-md-6">
-                                <button type="button" className="btn btn-outline-danger" style={{width: 100 + '%'}} onClick={delRow}>
-                                    -
-                                </button>
-                            </div>
-                        </div>
+                    <div className="form-group col-md-6">
+                        <button type="button" className="btn btn-outline-danger" style={{width: 100 + '%'}}
+                                onClick={delRow}>
+                            Убрать лишние
+                        </button>
                     </div>
                 </div>
             </form>
@@ -105,4 +131,3 @@ function Forms() {
 }
 
 export default Forms
-     
