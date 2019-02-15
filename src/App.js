@@ -1,14 +1,12 @@
 import React from 'react';
-import MainContent from "./components/MainContent"
-
+import Data from "./components/Data"
 
 function App() {
     return (
         <div className="App">
-            <center><MainContent/></center>
+            <Data />
         </div>
     )
 }
-
 
 export default App;
