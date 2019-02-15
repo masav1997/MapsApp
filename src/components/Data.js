@@ -49,6 +49,13 @@ export default class Data extends Component {
         ]).draw();
     };
 
+    remExPoints = () => {
+      if (!this.validation() && !this.addRow()){
+          return false;
+      }
+
+    };
+
     delRow = () => {
         if (!this.validation()) {
             return false;
@@ -145,7 +152,7 @@ export default class Data extends Component {
                                     <div className="form-group col-md-6">
                                         <button type="button" className="btn btn-outline-danger"
                                                 style={{width: 100 + '%'}}
-                                                onClick={this.delRow}>
+                                                onClick={this.remExPoints}>
                                             Убрать лишние
                                         </button>
                                     </div>
