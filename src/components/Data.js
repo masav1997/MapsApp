@@ -79,7 +79,7 @@ export default class Data extends Component {
         let circle = {
             geometry: [coords]
         };
-        let mapState = {center: [$('#lon').val(), $('#lat').val()], zoom: 5};
+        let mapState = {center: [$('#lat').val(), $('#lon').val()],  zoom: 5, controls:[]};
         const PolygonExample = () => (
             <YMaps>
                 <Map defaultState={mapState} className="map">
