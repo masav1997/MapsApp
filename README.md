@@ -4,10 +4,15 @@
 1. An input form has been created with the text field "Name" and two fields of the type "number";
 2. Validation of the form;
 3. Four buttons added:
+
     "+": when you click on this button, coordinates are added to the table;
+    
     "-": when you click on this button, the last row from the table is deleted;
+    
     "Process": when you click on this button, the page name changes and an area consisting of the entered points is displayed;
+    
     "Remove Unnecessary."
+    
  4. Built-in Yandex-card. An area with points from the list is displayed on the map.
  5. Connected links to Yandex and Google maps;
  6. Sorted the table.
