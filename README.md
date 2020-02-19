@@ -2,7 +2,7 @@
 
 ## Description:
 
-<img src="https://i.ibb.co/mNWjDqj/2020-02-20-00-04-44.png" width="50%" height="50%">
+<img src="https://i.ibb.co/mNWjDqj/2020-02-20-00-04-44.png">
 
 ## Functions:
 1. An input form has been created with the text field "Name" and two fields of the type "number";
